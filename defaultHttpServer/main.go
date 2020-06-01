@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+	// Handler will be automatically registered to the HTTP server
+	// for easy access to the program running sample report through the HTTP interface
 	_ "net/http/pprof"
 	"os"
 	"runtime"
@@ -15,6 +17,8 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 	log.SetOutput(os.Stdout)
 
+	// Limit CPU usage tp avoid overload, this line of code is only used for the test of this program,
+	// and has nothing to do with pprof.
 	runtime.GOMAXPROCS(1)
 
 	go func() {
